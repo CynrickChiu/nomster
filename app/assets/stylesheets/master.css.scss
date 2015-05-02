@@ -1,3 +1,5 @@
+@import url(http://fonts.googleapis.com/css?family=Roboto+Slab);
+
 body {
   background: url('/assets/concrete_seamless.png');
   font-family: Constantia, "Lucida Bright", Lucidabright, "Lucida Serif", Lucida, "DejaVu Serif", "Bitstream Vera Serif", "Liberation Serif", Georgia, serif;
@@ -7,6 +9,11 @@ body {
   background: url('/assets/cartographer.png');
   border-radius: 0;
   box-shadow: 0px 1px 3px #2a2a2a;
+}
+
+.navbar-inverse .navbar-brand {
+  color: #ff7b1c;
+  font-family: 'Roboto Slab', serif;
 }
 
 .booyah-box {
