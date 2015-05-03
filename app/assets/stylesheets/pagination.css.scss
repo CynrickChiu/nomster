@@ -1,0 +1,32 @@
+/* Custom CSS for Pagination */
+
+.pagination {
+  font-size: 15px;
+
+  a {
+    color: #feffff;
+    margin: 1px;
+    padding: 4px 10px;
+    border: solid 1px #32373b;
+    background: #8a8a8a;
+    box-shadow: inset 0px 1px 1px rgba(255, 255, 255, .1), 0px 1px 3px rgba(0, 0, 0, .1);
+    text-shadow: 0px 1px 0px rgba(0, 0, 0, .5);
+    border-radius: 3px;
+  
+    &:hover {
+      color: #ff7b1c;
+      background: #3e4347;
+      text-decoration: none;
+    }
+  }
+
+  em, span {
+    margin: 1px;
+    padding: 4px 10px;
+    border: none;
+    background: #2f3237;
+    box-shadow: inset 0px 0px 8px rgba(0,0,0, .5), 0px 1px 0px rgba(255,255,255, .1);
+    color: #feffff;
+    border-radius: 3px;
+  }
+}
