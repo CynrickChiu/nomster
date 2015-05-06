@@ -33,6 +33,13 @@ h1, h2, h3, h4, h5, h6 {
   padding: 0;
 }
 
+.field_with_errors {
+  color: #ff3333;
+  background-color: #ffeeee;
+  border-radius: 3px;
+  padding: 8px;
+}
+
 .clear-both {
   clear: both;
 }
