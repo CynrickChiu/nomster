@@ -47,6 +47,8 @@
 	      <%= simple_form_for @photo, :url => place_photos_path(@place) do |f| %>
 	      <div class="modal-body">
 	        <%= f.input :caption %>
+	        <br />
+	        <%= f.input :picture %>
 	      </div>
 	      <div class="modal-footer">
 	        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>

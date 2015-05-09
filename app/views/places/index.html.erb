@@ -8,6 +8,16 @@
       <small><%= place.user.email %></small>
     <% end %>
     
+    <br class="clear-both" />
+    <br />
+    <br />
+
+    <% place.photos.each do |photo| %>
+      <%= image_tag photo.picture %>
+      <br /><br />
+      <%= photo.caption %>
+    <% end %>
+
     <% if place.comments.present? %>
       <div class="col-xs-12">
   	    <blockquote>
