@@ -46,7 +46,7 @@
     <p><%= place.description %></p>
 
     <% if place.user.present? %>
-      <small><%= place.user.email %></small>
+      <small>- <%= place.user.email %></small>
     <% end %>
     
     <br class="clear-both" />
@@ -54,9 +54,8 @@
     <br />
 
     <% place.photos.each do |photo| %>
-      <%= image_tag photo.picture %>
-      <br /><br />
-      <%= photo.caption %>
+      <%= image_tag photo.picture, :title => photo.caption %>
+      <br />
     <% end %>
 
     <% if place.comments.present? %>
