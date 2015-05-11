@@ -35,7 +35,7 @@
       
       <ul class="nav navbar-nav navbar-right">
         <% if user_signed_in? %>
-          <li><%= link_to 'My Profile', user_path(current_user) %></li>
+          <li><%= link_to 'My profile', user_path(current_user) %></li>
           <li><%= link_to 'Sign out', destroy_user_session_path, :method => :delete %></li>
         <% else %>
           <li><%= link_to 'Sign in', new_user_session_path %></li>
@@ -46,14 +46,21 @@
   </div><!-- /.container-fluid -->
 </nav>
 
-<div class="xs-col-10 xs-col-offset-1">
-  <% if notice.present? %>
+
+<% if notice.present? %>
+  <br />
+  <div class="col-xs-10 col-xs-offset-1">
     <p class="alert alert-info"><%= notice %></p>
-  <% end %>
-  <% if alert.present? %>
+  </div>
+  <br class="clear-both" />
+<% end %>
+<% if alert.present? %>
+  <br />
+  <div class="col-xs-10 col-xs-offset-1">
     <p class="alert alert-danger"><%= alert %></p>
-  <% end %>
-</div>
+  </div>
+  <br class="clear-both" />
+<% end %>
 
 <%= yield %>
 
