@@ -6,6 +6,10 @@
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
   <%= csrf_meta_tags %>
   <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- bootstrap image gallery -->
+  <link rel="stylesheet" href="https://blueimp.github.io/Gallery/css/blueimp-gallery.min.css">
+  <link rel="stylesheet" href="https://blueimp.github.io/Bootstrap-Image-Gallery/css/bootstrap-image-gallery.css">
 </head>
 <body>
 
@@ -63,6 +67,10 @@
 <% end %>
 
 <%= yield %>
+
+<!-- bootstrap image gallery -->
+<script src="https://blueimp.github.io/Gallery/js/jquery.blueimp-gallery.min.js"></script>
+<script src="https://blueimp.github.io/Bootstrap-Image-Gallery/js/bootstrap-image-gallery.js"></script>
 
 </body>
 </html>
