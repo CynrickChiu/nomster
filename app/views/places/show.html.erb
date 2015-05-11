@@ -109,7 +109,9 @@
   	    <b><%= comment.humanized_rating %></b> - 
   	  <% end %>
   	  <%= comment.message %>
-  	  <small><%= comment.user.email %></small>
+      <br />
+  	  <small class="pull-right"><%= comment.user.email %></small>
+      <div class="clear-both"></div>
   	</blockquote>
   </div>
 <% end %>
