@@ -3,6 +3,8 @@ Nomster::Application.routes.draw do
 
   root 'places#index'
 
+  get 'places/map', to: 'places#map'
+
   resources :places do
     resources :comments, :only => :create
     resources :photos, :only => :create

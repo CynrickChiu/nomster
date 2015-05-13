@@ -5,6 +5,7 @@ body {
   font-family: Constantia, "Lucida Bright", Lucidabright, "Lucida Serif", Lucida, "DejaVu Serif", "Bitstream Vera Serif", "Liberation Serif", Georgia, serif;
 }
 
+/* top nav bar */
 .navbar.navbar-inverse {
   background: url('/assets/cartographer.png');
   border-radius: 0;
@@ -45,10 +46,24 @@ h1, h2, h3, h4, h5, h6 {
   clear: both;
 }
 
+ /* map for places/show.html.erb */
 #map-canvas {
   height: 300px;
 }
 
+/* map for places/map.html.erb */
+#world-map-canvas {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+}
+
+.map-buttons {
+  position: absolute;
+  z-index: 1;
+}
+
+/* user comments */
 blockquote {
   background: #f9f9f9;
   border-left: 10px solid #2e2e2e;
@@ -70,6 +85,7 @@ blockquote p {
   display: inline;
 }
 
+/* carousel */
 .carousel-inner > .item > img, .carousel-inner > .item > a > img {
   height: 550px;
   width: 80%;

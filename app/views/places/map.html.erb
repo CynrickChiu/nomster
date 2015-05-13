@@ -1,0 +1,46 @@
+<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&signed_in=true"></script>
+<script>
+  function initialize() {
+    var myLatlng = new google.maps.LatLng(37.16031655, -1.40625);
+    var mapOptions = {
+      zoomControl: true,
+      mapTypeControl: false,
+      zoom: 2,
+      center: myLatlng
+    };
+    var map = new google.maps.Map(document.getElementById('world-map-canvas'), mapOptions);
+
+    function mapPanTo() {
+      var lat = parseFloat(this.dataset.lat),
+          lng = parseFloat(this.dataset.lng),
+          newLatLng = new google.maps.LatLng(lat, lng);
+      map.panTo(newLatLng);
+      map.setZoom(4);
+    }
+
+    google.maps.event.addDomListener(document.getElementById('northAmerica'), 'click', mapPanTo);
+    google.maps.event.addDomListener(document.getElementById('southAmerica'), 'click', mapPanTo);
+    google.maps.event.addDomListener(document.getElementById('africa'), 'click', mapPanTo);
+    google.maps.event.addDomListener(document.getElementById('europe'), 'click', mapPanTo);
+    google.maps.event.addDomListener(document.getElementById('asia'), 'click', mapPanTo);
+    google.maps.event.addDomListener(document.getElementById('australia'), 'click', mapPanTo);
+  }
+
+  google.maps.event.addDomListener(window, 'load', initialize);
+</script>
+
+<div class="map-buttons">
+  <button type="button" class="btn btn-warning" id="northAmerica" data-lat="40.71395583" data-lng="-99.66796875">N. America</button>
+  
+  <button type="button" class="btn btn-warning" id="southAmerica" data-lat="-18.31281085" data-lng="-58.7109375">S. America</button>
+  
+  <button type="button" class="btn btn-warning" id="africa" data-lat="2.10889865" data-lng="21.4453125">Africa</button>
+  
+  <button type="button" class="btn btn-warning" id="europe" data-lat="50.84757295" data-lng="19.3359375">Europe</button>
+  
+  <button type="button" class="btn btn-warning" id="asia" data-lat="21.61657935" data-lng="102.48046875">Asia</button>
+  
+  <button type="button" class="btn btn-warning" id="australia" data-lat="-27.83907605" data-lng="134.82421875">Australia</button>
+</div>
+<div class="clear-both"></div>
+<div id="world-map-canvas"></div>
