@@ -55,7 +55,7 @@
         return function() {
           infowindow.setContent(locations[i][0]);
           infowindow.open(map, marker);
-          map.setZoom(10);
+          map.setZoom(16);
           map.setCenter(marker.getPosition());
         }
       })(marker, i));
