@@ -4,6 +4,13 @@
     var myLatlng = new google.maps.LatLng(37.16031655, -1.40625);
     var mapOptions = {
       zoomControl: true,
+      zoomControlOptions: {
+        position: google.maps.ControlPosition.RIGHT_CENTER
+      },
+      panControl: true,
+      panControlOptions: {
+        position: google.maps.ControlPosition.RIGHT_CENTER
+      },
       mapTypeControl: false,
       zoom: 2,
       center: myLatlng

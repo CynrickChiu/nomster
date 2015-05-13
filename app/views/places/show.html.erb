@@ -5,7 +5,14 @@
       var myLatlng = new google.maps.LatLng(<%= @place.latitude %>, <%= @place.longitude %>);
       var newCenter = new google.maps.LatLng(<%= @place.latitude %>, <%= @place.longitude %> - 0.005);
       var mapOptions = {
-        zoomControl: false,
+        zoomControl: true,
+        zoomControlOptions: {
+          position: google.maps.ControlPosition.RIGHT_CENTER
+        },
+        panControl: true,
+        panControlOptions: {
+          position: google.maps.ControlPosition.RIGHT_CENTER
+        },
         zoom: 16,
         center: newCenter
       };
