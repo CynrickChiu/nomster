@@ -35,6 +35,11 @@
     google.maps.event.addDomListener(document.getElementById('australia'), 'click', mapPanTo);
     google.maps.event.addDomListener(document.getElementById('worldView'), 'click', mapPanTo);
 
+    // event handlers for links
+    <% @places.sort_by { |place| place.name }.each.with_index(1) do |place, index| %>
+      google.maps.event.addDomListener(document.getElementById('place<%= index %>'), 'click', mapPanTo);
+    <% end %>
+
     var locations = [
       <% @places.each do |place| %>
         <% if place == @places.last %>
@@ -72,7 +77,7 @@
   google.maps.event.addDomListener(window, 'load', initialize);
 </script>
 
-<div class="col-xs-11 map-buttons">
+<div class="col-xs-12 map-buttons">
   <button type="button" class="btn btn-danger" id="worldView" data-lat="37.16031655" data-lng="-1.40625" data-zoom="2">World View</button>
   <button type="button" class="btn btn-warning" id="northAmerica" data-lat="40.71395583" data-lng="-99.66796875" data-zoom="4">N. America</button>
   <button type="button" class="btn btn-warning" id="southAmerica" data-lat="-18.31281085" data-lng="-58.7109375" data-zoom="4">S. America</button>
@@ -80,6 +85,18 @@
   <button type="button" class="btn btn-warning" id="europe" data-lat="50.84757295" data-lng="19.3359375" data-zoom="4">Europe</button>  
   <button type="button" class="btn btn-warning" id="asia" data-lat="21.61657935" data-lng="102.48046875" data-zoom="4">Asia</button>  
   <button type="button" class="btn btn-warning" id="australia" data-lat="-27.83907605" data-lng="134.82421875" data-zoom="4">Australia</button>
+</div>
+
+<div class="map-transparent-booyah-box-scrollable col-xs-2">
+  <h4>Number of places: <%= @places.count %></h4>
+  <br />
+  <% @places.sort_by { |place| place.name }.each.with_index(1) do |place, index| %>
+    <p>
+      <a href="#" id="place<%= index %>" data-lat="<%= place.latitude %>" data-lng="<%= place.longitude %>" data-zoom="12">
+        <%= index %>:&nbsp;&nbsp;<%= place.name %>
+      </a>
+    </p>
+  <% end %>
 </div>
 
 <div id="world-map-canvas"></div>
