@@ -3,14 +3,14 @@
   function initialize() {
     var myLatlng = new google.maps.LatLng(37.16031655, -1.40625);
     var mapOptions = {
-      panControl: true,
-      panControlOptions: {
-        position: google.maps.ControlPosition.RIGHT_BOTTOM
-      },
-      zoomControl: true,
-      zoomControlOptions: {
-        position: google.maps.ControlPosition.BOTTOM_RIGHT
-      },
+      panControl: false,
+      // panControlOptions: {
+      //   position: google.maps.ControlPosition.RIGHT_BOTTOM
+      // },
+      zoomControl: false,
+      // zoomControlOptions: {
+      //   position: google.maps.ControlPosition.BOTTOM_RIGHT
+      // },
       mapTypeControl: false,
       zoom: 2,
       center: myLatlng

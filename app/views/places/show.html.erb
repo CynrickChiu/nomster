@@ -3,16 +3,16 @@
   <script>
     function initialize() {
       var myLatlng = new google.maps.LatLng(<%= @place.latitude %>, <%= @place.longitude %>);
-      var newCenter = new google.maps.LatLng(<%= @place.latitude %>, <%= @place.longitude %> - 0.005);
+      var newCenter = new google.maps.LatLng(<%= @place.latitude %>, <%= @place.longitude %> - 0.003);
       var mapOptions = {
-        panControl: true,
-        panControlOptions: {
-          position: google.maps.ControlPosition.RIGHT_BOTTOM
-        },
-        zoomControl: true,
-        zoomControlOptions: {
-          position: google.maps.ControlPosition.BOTTOM_RIGHT
-        },
+        panControl: false,
+        // panControlOptions: {
+        //   position: google.maps.ControlPosition.RIGHT_BOTTOM
+        // },
+        zoomControl: false,
+        // zoomControlOptions: {
+        //   position: google.maps.ControlPosition.BOTTOM_RIGHT
+        // },
         zoom: 16,
         center: newCenter
       };
@@ -27,6 +27,7 @@
       var marker = new google.maps.Marker({
         position: myLatlng,
         map: map,
+        animation: google.maps.Animation.DROP,
         title: "<%= @place.name %>"
       });
 
