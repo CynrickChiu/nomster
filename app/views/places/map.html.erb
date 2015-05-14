@@ -70,7 +70,9 @@
 
     // event handlers for links
     <% @places.sort_by { |place| place.name }.each.with_index(1) do |place, index| %>
-      google.maps.event.addDomListener(document.getElementById('place<%= index %>'), 'click', mapPanTo);
+      <% if !(place.latitude.nil?) && !(place.longitude.nil?) %>
+        google.maps.event.addDomListener(document.getElementById('place<%= index %>'), 'click', mapPanTo);
+      <% end %>
     <% end %>
   }
 
@@ -88,14 +90,16 @@
 </div>
 
 <div class="map-transparent-booyah-box-scrollable col-xs-4 col-sm-2">
-  <h4>Number of places: <%= @places.count %></h4>
+  <h4>Registered places<br />(with coordinates):</h4>
   <br />
   <% @places.sort_by { |place| place.name }.each.with_index(1) do |place, index| %>
-    <p>
-      <a href="#" id="place<%= index %>" data-lat="<%= place.latitude %>" data-lng="<%= place.longitude %>" data-zoom="18">
-        <%= index %>:&nbsp;&nbsp;<%= place.name %>
-      </a>
-    </p>
+    <% if !(place.latitude.nil?) && !(place.longitude.nil?) %>
+      <p>
+        <a href="#" id="place<%= index %>" data-lat="<%= place.latitude %>" data-lng="<%= place.longitude %>" data-zoom="18">
+          <%= index %>:&nbsp;&nbsp;<%= place.name %>
+        </a>
+      </p>
+    <% end %>
   <% end %>
 </div>
 
