@@ -17,6 +17,38 @@
     };
     var map = new google.maps.Map(document.getElementById('world-map-canvas'), mapOptions);
 
+    var locations = [
+      <% @places.each do |place| %>
+        <% if place == @places.last %>
+        ['<%= link_to place.name, place_path(place) %><br/><%= place.description %>', <%= place.latitude %>, <%= place.longitude %>]
+        <% else %>
+        ['<%= link_to place.name, place_path(place) %><br/><%= place.description %>', <%= place.latitude %>, <%= place.longitude %>],
+        <% end %>
+      <% end %>
+    ];
+
+    var infowindow = new google.maps.InfoWindow();
+
+    var len = locations.length,
+        marker,
+        i;
+
+    for (i = 0; i < len; i++) {  
+      marker = new google.maps.Marker({
+        position: new google.maps.LatLng(locations[i][1], locations[i][2]),
+        map: map
+      });
+
+      google.maps.event.addListener(marker, 'click', (function(marker, i) {
+        return function() {
+          infowindow.setContent(locations[i][0]);
+          infowindow.open(map, marker);
+          // map.setZoom(14);
+          map.setCenter(marker.getPosition());
+        }
+      })(marker, i));
+    }
+
     // function for map panning
     function mapPanTo() {
       var lat = parseFloat(this.dataset.lat),
@@ -39,39 +71,6 @@
     <% @places.sort_by { |place| place.name }.each.with_index(1) do |place, index| %>
       google.maps.event.addDomListener(document.getElementById('place<%= index %>'), 'click', mapPanTo);
     <% end %>
-
-    var locations = [
-      <% @places.each do |place| %>
-        <% if place == @places.last %>
-        ['<%= link_to place.name, place_path(place) %><br/><%= place.description %>', <%= place.latitude %>, <%= place.longitude %>]
-        <% else %>
-        ['<%= link_to place.name, place_path(place) %><br/><%= place.description %>', <%= place.latitude %>, <%= place.longitude %>],
-        <% end %>
-      <% end %>
-    ];
-
-    var infowindow = new google.maps.InfoWindow();
-
-    var len = locations.length,
-        marker,
-        i;
-
-    for (i = 0; i < len; i++) {  
-      marker = new google.maps.Marker({
-        position: new google.maps.LatLng(locations[i][1], locations[i][2]),
-        map: map,
-        title: 'Click to Zoom'
-      });
-
-      google.maps.event.addListener(marker, 'click', (function(marker, i) {
-        return function() {
-          infowindow.setContent(locations[i][0]);
-          infowindow.open(map, marker);
-          map.setZoom(14);
-          map.setCenter(marker.getPosition());
-        }
-      })(marker, i));
-    }
   }
 
   google.maps.event.addDomListener(window, 'load', initialize);
@@ -92,7 +91,7 @@
   <br />
   <% @places.sort_by { |place| place.name }.each.with_index(1) do |place, index| %>
     <p>
-      <a href="#" id="place<%= index %>" data-lat="<%= place.latitude %>" data-lng="<%= place.longitude %>" data-zoom="12">
+      <a href="#" id="place<%= index %>" data-lat="<%= place.latitude %>" data-lng="<%= place.longitude %>" data-zoom="18">
         <%= index %>:&nbsp;&nbsp;<%= place.name %>
       </a>
     </p>
