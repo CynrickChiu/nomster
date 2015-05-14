@@ -80,7 +80,7 @@
 </script>
 
 <div class="col-xs-12 map-buttons">
-  <button type="button" class="btn btn-danger" id="worldView" data-lat="37.16031655" data-lng="-1.40625" data-zoom="2">World View</button>
+  <button type="button" class="btn btn-danger" id="worldView" data-lat="37.16031655" data-lng="-1.40625" data-zoom="3">World View</button>
   <button type="button" class="btn btn-warning" id="northAmerica" data-lat="40.71395583" data-lng="-99.66796875" data-zoom="4">N. America</button>
   <button type="button" class="btn btn-warning" id="southAmerica" data-lat="-18.31281085" data-lng="-58.7109375" data-zoom="4">S. America</button>
   <button type="button" class="btn btn-warning" id="africa" data-lat="2.10889865" data-lng="21.4453125" data-zoom="4">Africa</button>  
@@ -89,7 +89,7 @@
   <button type="button" class="btn btn-warning" id="australia" data-lat="-27.83907605" data-lng="134.82421875" data-zoom="4">Australia</button>
 </div>
 
-<div class="map-transparent-booyah-box-scrollable col-xs-4 col-sm-2">
+<div class="map-transparent-booyah-box-scrollable col-xs-4 col-sm-3">
   <h4>Registered places<br />(with coordinates):</h4>
   <br />
   <% @places.sort_by { |place| place.name }.each.with_index(1) do |place, index| %>
