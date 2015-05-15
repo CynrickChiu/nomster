@@ -59,6 +59,7 @@
       map.setZoom(parseInt(this.dataset.zoom));
     }
 
+    /* original code for assigning google map event listeners
     // event handlers for buttons
     google.maps.event.addDomListener(document.getElementById('northAmerica'), 'click', mapPanTo);
     google.maps.event.addDomListener(document.getElementById('southAmerica'), 'click', mapPanTo);
@@ -71,20 +72,29 @@
     // event handlers for links
     <% @places.sort_by { |place| place.name }.each.with_index(1) do |place, index| %>
       google.maps.event.addDomListener(document.getElementById('place<%= index %>'), 'click', mapPanTo);
-    <% end %>
+    <% end %> */
+
+    // refactored code for assigning google map event listeners
+    // store all elements with class name "map-pan"
+    var mapPanElements = document.getElementsByClassName("map-pan");
+
+    // loop through mapPanElements and assign an event listener
+    [].forEach.call(mapPanElements, function(element) {
+      google.maps.event.addDomListener(element, 'click', mapPanTo);
+    });  
   }
 
   google.maps.event.addDomListener(window, 'load', initialize);
 </script>
 
 <div class="col-xs-12 map-buttons">
-  <button type="button" class="btn btn-danger" id="worldView" data-lat="37.16031655" data-lng="-1.40625" data-zoom="3">World View</button>
-  <button type="button" class="btn btn-warning" id="northAmerica" data-lat="40.71395583" data-lng="-99.66796875" data-zoom="4">N. America</button>
-  <button type="button" class="btn btn-warning" id="southAmerica" data-lat="-18.31281085" data-lng="-58.7109375" data-zoom="4">S. America</button>
-  <button type="button" class="btn btn-warning" id="africa" data-lat="2.10889865" data-lng="21.4453125" data-zoom="4">Africa</button>  
-  <button type="button" class="btn btn-warning" id="europe" data-lat="50.84757295" data-lng="19.3359375" data-zoom="4">Europe</button>  
-  <button type="button" class="btn btn-warning" id="asia" data-lat="21.61657935" data-lng="102.48046875" data-zoom="4">Asia</button>  
-  <button type="button" class="btn btn-warning" id="australia" data-lat="-27.83907605" data-lng="134.82421875" data-zoom="4">Australia</button>
+  <button type="button" class="btn btn-danger map-pan" data-lat="37.16031655" data-lng="-1.40625" data-zoom="3">World View</button>
+  <button type="button" class="btn btn-warning map-pan" data-lat="40.71395583" data-lng="-99.66796875" data-zoom="4">N. America</button>
+  <button type="button" class="btn btn-warning map-pan" data-lat="-18.31281085" data-lng="-58.7109375" data-zoom="4">S. America</button>
+  <button type="button" class="btn btn-warning map-pan" data-lat="2.10889865" data-lng="21.4453125" data-zoom="4">Africa</button>  
+  <button type="button" class="btn btn-warning map-pan" data-lat="50.84757295" data-lng="19.3359375" data-zoom="4">Europe</button>  
+  <button type="button" class="btn btn-warning map-pan" data-lat="21.61657935" data-lng="102.48046875" data-zoom="4">Asia</button>  
+  <button type="button" class="btn btn-warning map-pan" data-lat="-27.83907605" data-lng="134.82421875" data-zoom="4">Australia</button>
 </div>
 
 <div class="map-transparent-booyah-box-scrollable col-xs-4 col-sm-3">
@@ -92,7 +102,7 @@
   <br />
   <% @places.sort_by { |place| place.name }.each.with_index(1) do |place, index| %>
     <p>
-      <a href="#" id="place<%= index %>" data-lat="<%= place.latitude %>" data-lng="<%= place.longitude %>" data-zoom="18">
+      <a href="#" class="map-pan" data-lat="<%= place.latitude %>" data-lng="<%= place.longitude %>" data-zoom="18">
         <%= index %>:&nbsp;&nbsp;<%= place.name %>
       </a>
     </p> 
