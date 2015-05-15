@@ -70,9 +70,7 @@
 
     // event handlers for links
     <% @places.sort_by { |place| place.name }.each.with_index(1) do |place, index| %>
-      <% if !(place.latitude.nil?) && !(place.longitude.nil?) %>
-        google.maps.event.addDomListener(document.getElementById('place<%= index %>'), 'click', mapPanTo);
-      <% end %>
+      google.maps.event.addDomListener(document.getElementById('place<%= index %>'), 'click', mapPanTo);
     <% end %>
   }
 
@@ -93,13 +91,11 @@
   <h4>Registered places<br />(with coordinates):</h4>
   <br />
   <% @places.sort_by { |place| place.name }.each.with_index(1) do |place, index| %>
-    <% if !(place.latitude.nil?) && !(place.longitude.nil?) %>
-      <p>
-        <a href="#" id="place<%= index %>" data-lat="<%= place.latitude %>" data-lng="<%= place.longitude %>" data-zoom="18">
-          <%= index %>:&nbsp;&nbsp;<%= place.name %>
-        </a>
-      </p>
-    <% end %>
+    <p>
+      <a href="#" id="place<%= index %>" data-lat="<%= place.latitude %>" data-lng="<%= place.longitude %>" data-zoom="18">
+        <%= index %>:&nbsp;&nbsp;<%= place.name %>
+      </a>
+    </p> 
   <% end %>
 </div>
 

@@ -61,7 +61,7 @@ class PlacesController < ApplicationController
   end
 
   def map
-  	@places = Place.all
+  	@places = Place.mappable
   end
 
   private

@@ -9,4 +9,8 @@ class Place < ActiveRecord::Base
   validates :name, :presence => true, :length => { :minimum => 3 }
   validates :address, :presence => true
   validates :description, :presence => true
+
+  def self.mappable
+    where.not(latitude: nil, longitude: nil)
+  end
 end
