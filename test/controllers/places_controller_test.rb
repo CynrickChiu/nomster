@@ -173,4 +173,9 @@ class PlacesControllerTest < ActionController::TestCase
     end
   end
 
+  test "world map found" do
+    get :map
+    assert_response :success
+  end
+
 end

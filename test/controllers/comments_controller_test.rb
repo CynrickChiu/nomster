@@ -8,7 +8,7 @@ class CommentsControllerTest < ActionController::TestCase
     place = FactoryGirl.create(:place)
     assert_difference 'place.comments.count' do
       post :create, :place_id => place.id, :comment => {
-        :message => 'Very yummy!',
+        :message => 'Some message',
       	:rating => '5_stars'
       }
     end
