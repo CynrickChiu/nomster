@@ -4,6 +4,11 @@ class Api::PlacesController < ApplicationController
     render json: @places
   end
 
+  def show
+    @place = Place.find(params[:id])
+    render json: @place
+  end
+
   def default_serializer_options
     {root: false}
   end
