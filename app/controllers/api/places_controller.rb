@@ -1,9 +1,9 @@
 class Api::PlacesController < ApplicationController
-  protect_from_forgery with: :null_session
+  protect_from_forgery with: :null_session, if: Proc.new { |c| c.request.format == 'application/json' }
 
   def index
     @places = Place.all
-    render json: @places
+    render json: @places, status: :ok
   end
 
   def show
