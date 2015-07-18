@@ -4,7 +4,7 @@ class Api::CommentsController < ApplicationController
   def index
     @place = Place.find(params[:place_id])
     @comments = @place.comments
-    render json: @comments
+    render json: @comments, status: :ok
   end
 
   def create
@@ -31,6 +31,13 @@ class Api::CommentsController < ApplicationController
     else
       render json: @comment.errors, status: :unprocessable_entity
     end
+  end
+
+  def destroy
+    @place = Place.find(params[:place_id])
+    @comment = @place.comments.find(params[:id])
+    @comment.destroy
+    head :no_content
   end
 
   private
