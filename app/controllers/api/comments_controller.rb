@@ -1,8 +1,20 @@
 class Api::CommentsController < ApplicationController
+  protect_from_forgery with: :null_session, if: Proc.new { |c| c.request.format == 'application/json' }
+
   def index
     @place = Place.find(params[:place_id])
     @comments = @place.comments
     render json: @comments
+  end
+
+  def create
+    @place = Place.find(params[:place_id])
+    @comment = @place.comments.new(comment_params)
+    if @comment.save
+      render json: @comment, status: :created
+    else
+      render json: @comment.errors, status: :unprocessable_entity
+    end
   end
 
   def show
@@ -18,6 +30,6 @@ class Api::CommentsController < ApplicationController
   end
 
   def comment_params
-    params.require(:comment).permit(:message, :rating)
+    params.require(:comment).permit(:message, :rating, :user_id)
   end
 end
