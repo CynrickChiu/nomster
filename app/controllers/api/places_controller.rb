@@ -20,6 +20,12 @@ class Api::PlacesController < ApplicationController
     end
   end
 
+  def destroy
+    @place = Place.find(params[:id])
+    @place.destroy
+    head :no_content
+  end
+
   private
 
   def default_serializer_options
