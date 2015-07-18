@@ -6,6 +6,15 @@ class Api::PlacesController < ApplicationController
     render json: @places, status: :ok
   end
 
+  def create
+    @place = Place.new(place_params)
+    if @place.save
+      render json: @place, status: :created
+    else
+      render json: @place.errors, status: :unprocessable_entity
+    end
+  end
+
   def show
     @place = Place.find(params[:id])
     render json: @place
