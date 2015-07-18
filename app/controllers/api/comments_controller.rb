@@ -23,6 +23,16 @@ class Api::CommentsController < ApplicationController
     render json: @comment
   end
 
+  def update
+    @place = Place.find(params[:place_id])
+    @comment = @place.comments.find(params[:id])
+    if @comment.update(comment_params)
+      head :no_content
+    else
+      render json: @comment.errors, status: :unprocessable_entity
+    end
+  end
+
   private
 
   def default_serializer_options
