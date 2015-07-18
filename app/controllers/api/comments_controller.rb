@@ -11,7 +11,13 @@ class Api::CommentsController < ApplicationController
     render json: @comment
   end
 
+  private
+
   def default_serializer_options
     {root: false}
+  end
+
+  def comment_params
+    params.require(:comment).permit(:message, :rating)
   end
 end

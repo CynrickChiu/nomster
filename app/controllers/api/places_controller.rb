@@ -9,7 +9,13 @@ class Api::PlacesController < ApplicationController
     render json: @place
   end
 
+  private
+
   def default_serializer_options
     {root: false}
+  end
+
+  def place_params
+    params.require(:place).permit(:name, :address, :description)
   end
 end

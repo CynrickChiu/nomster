@@ -13,8 +13,8 @@ Nomster::Application.routes.draw do
   end
 
   namespace :api, :defaults => {:format => :json} do
-    resources :places, :only => [:index, :show] do
-      resources :comments, :only => [:index, :show]
+    resources :places do
+      resources :comments
     end
   end
 
