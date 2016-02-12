@@ -65,15 +65,15 @@
 
     <% if place.comments.present? %>
       <div class="col-xs-12">
-  	    <blockquote>
-  	      <% if place.comments.last.humanized_rating.present? %>
-  	        <b><%= place.comments.last.humanized_rating %></b> - 
-  	      <% end %>
-  	      <%= place.comments.last.message %>
-  	      <br />
-  	      <small class="pull-right"><%= place.comments.last.user.email %></small>
-  	      <div class="clear-both"></div>
-  	    </blockquote>
+        <blockquote>
+          <% if place.comments.last.humanized_rating.present? %>
+            <b><%= place.comments.last.humanized_rating %></b> - 
+          <% end %>
+          <%= place.comments.last.message %>
+          <br />
+          <small class="pull-right"><%= place.comments.last.user.email %></small>
+          <div class="clear-both"></div>
+        </blockquote>
       </div>
     <% end %>
   </div>
